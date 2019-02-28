@@ -29,7 +29,7 @@ namespace imagemaker
             int desired_y_dpi = 300;
 
             // Variable mit der Versionsinfo der GhostScript DLL anlegen
-            GhostscriptVersionInfo gvi = new GhostscriptVersionInfo(@"C:\Users\UweZabel\source\repos\imagemaker\imagemaker\bin\Debug\net461\bin\gsdll32.dll");
+            // GhostscriptVersionInfo gvi = new GhostscriptVersionInfo(@"C:\Users\UweZabel\source\repos\imagemaker\imagemaker\bin\Debug\net461\gsdll32.dll");
 
             // Informationen über die Verwendete Methode der GhostScript DLL ins Log schreiben
             log.Info($"using (GhostscriptRasterizer rasterizer = new GhostscriptRasterizer()))");
@@ -38,7 +38,7 @@ namespace imagemaker
             using (GhostscriptRasterizer rasterizer = new GhostscriptRasterizer())
             {
                 // Die zu verarbeitende PDF Datei aus dem Stream holen
-                rasterizer.Open(myBlob, gvi, true);
+                rasterizer.Open(myBlob); //, gvi, true);
 
                 // Für jede Seite in der PDF Datei muss eine eigene JPG Datei angelegt werden.
                 for (int pageNumber = 1; pageNumber <= rasterizer.PageCount; pageNumber++)
